@@ -1,0 +1,52 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "nodemonConfig": {
+    "ignore": [
+      "front/*"
+    ]
+  },
+  "engines": {
+    "node": "16.10.0"
+  },
+  "scripts": {
+    "b2": "npm run build-server && npm run build-client",
+    "ssr0": "npm run build-client && npm run build-server",
+    "ssr": "npm run build-server && npm run build-client:prod",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start2": "nodemon ./index.js --exec babel-node -e js",
+    "start1": "nodemon ./index.js --inspect",
+    "f": "cd angular && ng serve --port 4200",
+    "b": "nodemon --experimental-modules --es-module-specifier-resolution=node ./server.js",
+    "deploy": "heroku login && git init && heroku git:remote -a recette-cuisine && git add . && git commit -am 'better' && git push heroku master"
+  },
+  "author": "mourabit",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.2",
+    "bootstrap": "^4.1.0",
+    "cors": "^2.8.5",
+    "event-stream": "^4.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.6",
+    "multer": "^1.4.1",
+    "reflect-metadata": "^0.1.10",
+    "socket.io": "^4.4.1",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.11.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "@types/express": "^4.16.0",
+    "@types/node": "^12.11.1",
+    "@types/socket.io": "^1.4.38",
+    "ts-node": "~7.0.1",
+    "tslint": "~6.1.0",
+    "typescript": "4.4.4"
+  }
+}

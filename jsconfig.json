@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "checkJs": true,
+    "target":"ESNext",
+    "moduleResolution": "Node",
+    "experimentalDecorators": true,
+  },
+  "include": ["src/**/*"]
+}
