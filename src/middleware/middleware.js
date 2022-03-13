@@ -5,11 +5,17 @@
 import bodyParser from 'body-parser';
 import path from 'path';
 import cors from 'cors';
-import {route} from '../routes/route';
+import { route } from '../routes/route';
 import express from 'express';
 
-
-export function middleware(app) {
+import { Server } from 'socket.io';
+import http from 'http';
+ 
+/**
+ * @param {express.Express} app 
+ * @param {http.Server} server 
+ */
+export function middleware(app, server) {
     //return json to client
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
@@ -24,7 +30,23 @@ export function middleware(app) {
         next();
     });
     // socket import
-    // require('./io');
+    const io = new Server(server)
+
+    /**
+     * @param {*} req 
+     */
+    app.use(function (req, res, next) {
+        req.io = io;
+        next();
+    });
+
+    io.of('/comments').on('connection', (socket) => {
+        console.log('>> Socket-Comment');
+    });
+
+    io.of('/noteRecette').on('connection', (socket) => {
+        console.log('>> Socket-noteRecette');
+    });
 
     // router
     route(app);

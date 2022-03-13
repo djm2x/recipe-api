@@ -23,7 +23,7 @@ const server = http.createServer(app);
 // seedData.seedRecettes();
 // seedData.seedAdminUser();
 // insertCategorie();
-middleware(app);
+middleware(app, server);
 
 server.listen(PORT, () => console.log(`-runnig in port ${PORT}`));
 // heroku login
