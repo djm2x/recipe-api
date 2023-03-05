@@ -11,4 +11,4 @@ COPY . ./
 RUN ls -al
 
 # Serve the app
-CMD ["node", "server.js"]
+CMD ["npm", "run", "b0"]

@@ -8,7 +8,6 @@
 // import binsRoutes from './binsRoutes';
 
 import { homeController } from "../controllers/homeController";
-import fs from 'fs/promises';
 import { carnetRoutes } from "./carnetRoutes";
 import { routesComment } from "./commentRoutes";
 import { routesRecette } from "./recetteRoutes";

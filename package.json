@@ -21,6 +21,7 @@
     "start1": "nodemon ./index.js --inspect",
     "f": "cd angular && ng serve --port 4200",
     "b": "nodemon --experimental-modules --es-module-specifier-resolution=node ./server.js",
+    "b0": "node --experimental-modules --es-module-specifier-resolution=node ./server.js",
     "deploy": "heroku login && git init && heroku git:remote -a recette-cuisine && git add . && git commit -am 'better' && git push heroku master"
   },
   "author": "mourabit",

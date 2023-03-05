@@ -3,9 +3,8 @@
 // express = require('express');
 import express from 'express';
 import http from 'http';
-import { middleware } from './src/middleware/middleware';
 import { mongoConnection } from './src/models/dbContext';
-// const middleware = require('./src/middleware/middleware');
+import { middleware } from './src/middleware/middleware';
 // const insertCategorie = require('./src/utils/categorieList');
 // const mongoConnection = require('./src/models/dbContext');
 // const seedData = require('./src/utils/seedData');
@@ -26,6 +25,7 @@ const server = http.createServer(app);
 middleware(app, server);
 
 server.listen(PORT, () => console.log(`-runnig in port ${PORT}`));
+
 // heroku login
 // git init
 // heroku git:remote -a recette-cuisine
