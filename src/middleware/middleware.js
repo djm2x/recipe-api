@@ -21,7 +21,9 @@ export function middleware(app, server) {
     app.use(bodyParser.json());
 
     //cors
-    app.use(cors());
+    app.use(cors({
+        origin: '*'
+    }));
 
     //log info about request
     app.route('*').get((req, res, next) => {
