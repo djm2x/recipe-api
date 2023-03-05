@@ -33,32 +33,32 @@ export function middleware(app, server) {
     });
     // socket import
 
-    // const io = new Server(server)
+    const io = new Server(server, {cors: {origin: '*'}})
     // /**
     //  * @param {*} req 
     //  */
     // console.warn('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>0')
-    // app.use(function (req, res, next) {
-    //     console.warn('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>1')
-    //     req.io = io;
-    //     next();
-    // });
+    app.use(function (req, res, next) {
+        console.warn('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>1')
+        req.io = io;
+        next();
+    });
     
-    // io.on('connection', (socket) => {
-    //     console.log('user connected');
-    //     socket.on('disconnect', function () {
-    //         console.log('user disconnected');
-    //     });
-    // })
+    io.on('connection', (socket) => {
+        console.log('user connected');
+        socket.on('disconnect', function () {
+            console.log('user disconnected');
+        });
+    })
     
-    // io.of('/comments').on('connection', (socket) => {
-    //     console.warn('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>2')
-    //     console.log('>> Socket-Comment');
-    // });
+    io.of('/comments').on('connection', (socket) => {
+        console.warn('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>2')
+        console.log('>> Socket-Comment');
+    });
 
-    // io.of('/noteRecette').on('connection', (socket) => {
-    //     console.log('>> Socket-noteRecette');
-    // });
+    io.of('/noteRecette').on('connection', (socket) => {
+        console.log('>> Socket-noteRecette');
+    });
 
     // router
     route(app);
